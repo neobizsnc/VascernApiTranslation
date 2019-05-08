@@ -1,0 +1,166 @@
+﻿@model vascernNew.Models.HcpCenterTraslation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>HcpCenterTraslation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Website" class="control-label"></label>
+                <input asp-for="Website" class="form-control" />
+                <span asp-validation-for="Website" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Deparment" class="control-label"></label>
+                <input asp-for="Deparment" class="form-control" />
+                <span asp-validation-for="Deparment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Zipcode" class="control-label"></label>
+                <input asp-for="Zipcode" class="form-control" />
+                <span asp-validation-for="Zipcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cordinator" class="control-label"></label>
+                <input asp-for="Cordinator" class="form-control" />
+                <span asp-validation-for="Cordinator" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailDirect" class="control-label"></label>
+                <input asp-for="EmailDirect" class="form-control" />
+                <span asp-validation-for="EmailDirect" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneDirect" class="control-label"></label>
+                <input asp-for="PhoneDirect" class="form-control" />
+                <span asp-validation-for="PhoneDirect" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fax" class="control-label"></label>
+                <input asp-for="Fax" class="form-control" />
+                <span asp-validation-for="Fax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpeningTime" class="control-label"></label>
+                <input asp-for="OpeningTime" class="form-control" />
+                <span asp-validation-for="OpeningTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoreService" class="control-label"></label>
+                <input asp-for="CoreService" class="form-control" />
+                <span asp-validation-for="CoreService" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherSpecialistInside" class="control-label"></label>
+                <input asp-for="OtherSpecialistInside" class="form-control" />
+                <span asp-validation-for="OtherSpecialistInside" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherSpecialistOutside" class="control-label"></label>
+                <input asp-for="OtherSpecialistOutside" class="form-control" />
+                <span asp-validation-for="OtherSpecialistOutside" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ish24" class="control-label"></label>
+                <input asp-for="Ish24" class="form-control" />
+                <span asp-validation-for="Ish24" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="H24Number" class="control-label"></label>
+                <input asp-for="H24Number" class="form-control" />
+                <span asp-validation-for="H24Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HcpWebsite" class="control-label"></label>
+                <input asp-for="HcpWebsite" class="form-control" />
+                <span asp-validation-for="HcpWebsite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Youtube" class="control-label"></label>
+                <input asp-for="Youtube" class="form-control" />
+                <span asp-validation-for="Youtube" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facebook" class="control-label"></label>
+                <input asp-for="Facebook" class="form-control" />
+                <span asp-validation-for="Facebook" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Twitter" class="control-label"></label>
+                <input asp-for="Twitter" class="form-control" />
+                <span asp-validation-for="Twitter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InfoPointInside" class="control-label"></label>
+                <input asp-for="InfoPointInside" class="form-control" />
+                <span asp-validation-for="InfoPointInside" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InfoPointOutside" class="control-label"></label>
+                <input asp-for="InfoPointOutside" class="form-control" />
+                <span asp-validation-for="InfoPointOutside" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lat" class="control-label"></label>
+                <input asp-for="Lat" class="form-control" />
+                <span asp-validation-for="Lat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lng" class="control-label"></label>
+                <input asp-for="Lng" class="form-control" />
+                <span asp-validation-for="Lng" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CultureId" class="control-label"></label>
+                <select asp-for="CultureId" class ="form-control" asp-items="ViewBag.CultureId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="HcpCenterId" class="control-label"></label>
+                <select asp-for="HcpCenterId" class ="form-control" asp-items="ViewBag.HcpCenterId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

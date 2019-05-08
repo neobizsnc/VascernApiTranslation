@@ -1,0 +1,24 @@
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\bin\Release\netcoreapp2.0\vascernNew.deps.json
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\bin\Release\netcoreapp2.0\vascernNew.runtimeconfig.json
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\bin\Release\netcoreapp2.0\vascernNew.runtimeconfig.dev.json
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\bin\Release\netcoreapp2.0\vascernNew.dll
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\bin\Release\netcoreapp2.0\vascernNew.pdb
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.csproj.CoreCompileInputs.cache
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.AssemblyInfoInputs.cache
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.AssemblyInfo.cs
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.dll
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.pdb
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.csprojAssemblyReference.cache
+F:\Progetti VS\vascernNew\vascernNew\bin\Release\netcoreapp2.0\vascernNew.deps.json
+F:\Progetti VS\vascernNew\vascernNew\bin\Release\netcoreapp2.0\vascernNew.runtimeconfig.json
+F:\Progetti VS\vascernNew\vascernNew\bin\Release\netcoreapp2.0\vascernNew.runtimeconfig.dev.json
+F:\Progetti VS\vascernNew\vascernNew\bin\Release\netcoreapp2.0\vascernNew.dll
+F:\Progetti VS\vascernNew\vascernNew\bin\Release\netcoreapp2.0\vascernNew.pdb
+F:\Progetti VS\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.csprojAssemblyReference.cache
+F:\Progetti VS\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.csproj.CoreCompileInputs.cache
+F:\Progetti VS\vascernNew\vascernNew\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+F:\Progetti VS\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.AssemblyInfoInputs.cache
+F:\Progetti VS\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.AssemblyInfo.cs
+F:\Progetti VS\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.dll
+F:\Progetti VS\vascernNew\vascernNew\obj\Release\netcoreapp2.0\vascernNew.pdb

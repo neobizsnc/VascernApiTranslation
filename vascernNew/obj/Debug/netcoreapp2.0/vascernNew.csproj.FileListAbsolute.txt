@@ -1,0 +1,12 @@
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\bin\Debug\netcoreapp2.0\vascernNew.deps.json
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\bin\Debug\netcoreapp2.0\vascernNew.runtimeconfig.json
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\bin\Debug\netcoreapp2.0\vascernNew.runtimeconfig.dev.json
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\bin\Debug\netcoreapp2.0\vascernNew.dll
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\bin\Debug\netcoreapp2.0\vascernNew.pdb
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Debug\netcoreapp2.0\vascernNew.csprojAssemblyReference.cache
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Debug\netcoreapp2.0\vascernNew.csproj.CoreCompileInputs.cache
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Debug\netcoreapp2.0\vascernNew.AssemblyInfoInputs.cache
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Debug\netcoreapp2.0\vascernNew.AssemblyInfo.cs
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Debug\netcoreapp2.0\vascernNew.dll
+C:\Users\stefanotoppi\source\repos\vascernNew\vascernNew\obj\Debug\netcoreapp2.0\vascernNew.pdb
