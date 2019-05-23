@@ -13,6 +13,10 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <input asp-for="Id" class="form-control" value="0" type="hidden" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
@@ -124,11 +128,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="CultureId" class="control-label"></label>
-                <select asp-for="CultureId" class ="form-control" asp-items="ViewBag.CultureId"></select>
+                <select asp-for="CultureId" class="form-control" asp-items="ViewBag.CultureId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="AssociationId" class="control-label"></label>
-                <select asp-for="AssociationId" class ="form-control" asp-items="ViewBag.AssociationId"></select>
+                <select asp-for="AssociationId" class="form-control" asp-items="ViewBag.AssociationId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

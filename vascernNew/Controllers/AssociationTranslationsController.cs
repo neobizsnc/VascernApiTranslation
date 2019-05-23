@@ -20,9 +20,10 @@ namespace vascernNew.Controllers
         }
 
         // GET: AssociationTranslations
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var applicationDbContext = _context.AssociationTranslation.Include(a => a.Association).Include(a => a.Culture);
+            ViewBag.id = id;
+            var applicationDbContext = _context.AssociationTranslation.Where(x => x.AssociationId == id).Include(a => a.Association).Include(a => a.Culture);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -47,9 +48,9 @@ namespace vascernNew.Controllers
         }
 
         // GET: AssociationTranslations/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", "Name");
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", "Name", id);
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name");
             return View();
         }
@@ -59,13 +60,13 @@ namespace vascernNew.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,NameWorkingGroup,Country,City,Address,Zipcode,Contact,PhoneDirect,Fax,OpeningTime,HowToContact,EmailDirect,Website,Facebook,Twitter,Youtube,Linkedin,Instagram,Service,Lat,Lng,Type,CultureId,AssociationId")] AssociationTranslation associationTranslation)
+        public async Task<IActionResult> Create(AssociationTranslation associationTranslation)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(associationTranslation);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Associations");
             }
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", "Name", associationTranslation.AssociationId);
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", associationTranslation.CultureId);
@@ -120,7 +121,7 @@ namespace vascernNew.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Associations");
             }
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", "Name", associationTranslation.AssociationId);
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", associationTranslation.CultureId);
@@ -155,7 +156,7 @@ namespace vascernNew.Controllers
             var associationTranslation = await _context.AssociationTranslation.SingleOrDefaultAsync(m => m.Id == id);
             _context.AssociationTranslation.Remove(associationTranslation);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), "Associations");
         }
 
         private bool AssociationTranslationExists(int id)

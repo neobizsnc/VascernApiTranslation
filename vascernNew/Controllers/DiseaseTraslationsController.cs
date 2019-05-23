@@ -20,9 +20,10 @@ namespace vascernNew.Controllers
         }
 
         // GET: DiseaseTraslations
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var applicationDbContext = _context.DiseaseTraslation.Include(d => d.Culture).Include(d => d.Disease);
+            ViewBag.id = id;
+            var applicationDbContext = _context.DiseaseTraslation.Where(x=>x.DiseaseId == id).Include(d => d.Culture).Include(d => d.Disease);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -47,10 +48,10 @@ namespace vascernNew.Controllers
         }
 
         // GET: DiseaseTraslations/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name");
-            ViewData["DiseaseId"] = new SelectList(_context.Disease, "Id", "Name");
+            ViewData["DiseaseId"] = new SelectList(_context.Disease, "Id", "Name", id);
             return View();
         }
 
@@ -59,13 +60,13 @@ namespace vascernNew.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,CultureId,DiseaseId")] DiseaseTraslation diseaseTraslation)
+        public async Task<IActionResult> Create(DiseaseTraslation diseaseTraslation)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(diseaseTraslation);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Diseases");
             }
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", diseaseTraslation.CultureId);
             ViewData["DiseaseId"] = new SelectList(_context.Disease, "Id", "Name", diseaseTraslation.DiseaseId);
@@ -120,7 +121,7 @@ namespace vascernNew.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "Diseases");
             }
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", diseaseTraslation.CultureId);
             ViewData["DiseaseId"] = new SelectList(_context.Disease, "Id", "Name", diseaseTraslation.DiseaseId);
@@ -155,7 +156,7 @@ namespace vascernNew.Controllers
             var diseaseTraslation = await _context.DiseaseTraslation.SingleOrDefaultAsync(m => m.Id == id);
             _context.DiseaseTraslation.Remove(diseaseTraslation);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), "Diseases");
         }
 
         private bool DiseaseTraslationExists(int id)

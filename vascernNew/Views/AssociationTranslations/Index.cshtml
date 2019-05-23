@@ -7,82 +7,16 @@
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" asp-route-id="@ViewBag.id">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.NameWorkingGroup)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Country)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.City)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Address)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Zipcode)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Contact)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PhoneDirect)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Fax)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OpeningTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.HowToContact)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.EmailDirect)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Website)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Facebook)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Twitter)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Youtube)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Linkedin)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Instagram)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Service)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Lat)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Lng)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Type)
-                </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Association)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Culture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th></th>
         </tr>
@@ -91,80 +25,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Culture.Name)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NameWorkingGroup)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Country)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Zipcode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contact)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneDirect)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fax)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OpeningTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HowToContact)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailDirect)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Website)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Facebook)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Twitter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Youtube)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Linkedin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Instagram)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Service)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lng)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Association.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Culture.Id)
-            </td>
-            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
