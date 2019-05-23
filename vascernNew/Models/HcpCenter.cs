@@ -12,7 +12,7 @@ namespace vascernNew.Models
         public ICollection<HcpCenterTraslation> HcpCenterTraslation { get; set; }
         public ICollection<DiseaseCenter> DiseaseCenter { get; set; }
         public ICollection<AssociationHcp> AssociationHcp { get; set; }
-        //public ICollection<CenterEmail> CenterEmail { get; set; }
-        //public ICollection<CenterPhone> CenterPhone { get; set; }
+        public ICollection<CenterEmail> CenterEmail { get; set; }
+        public ICollection<CenterPhone> CenterPhone { get; set; }
     }
 }

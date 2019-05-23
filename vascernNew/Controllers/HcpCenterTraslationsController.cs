@@ -20,9 +20,10 @@ namespace vascernNew.Controllers
         }
 
         // GET: HcpCenterTraslations
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var applicationDbContext = _context.HcpCenterTraslations.Include(h => h.Culture).Include(h => h.HcpCenter);
+            ViewBag.id = id;
+            var applicationDbContext = _context.HcpCenterTraslations.Where(x => x.HcpCenterId == id).Include(h => h.Culture).Include(h => h.HcpCenter);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -47,10 +48,10 @@ namespace vascernNew.Controllers
         }
 
         // GET: HcpCenterTraslations/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name");
-            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name");
+            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", id);
             return View();
         }
 
@@ -59,13 +60,13 @@ namespace vascernNew.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Website,Name,Deparment,Address,City,Zipcode,Country,Cordinator,EmailDirect,PhoneDirect,Fax,OpeningTime,CoreService,OtherSpecialistInside,OtherSpecialistOutside,Ish24,H24Number,HcpWebsite,Youtube,Facebook,Twitter,InfoPointInside,InfoPointOutside,Lat,Lng,Type,CultureId,HcpCenterId")] HcpCenterTraslation hcpCenterTraslation)
+        public async Task<IActionResult> Create( HcpCenterTraslation hcpCenterTraslation)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(hcpCenterTraslation);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "HcpCenters");
             }
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", hcpCenterTraslation.CultureId);
             ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", hcpCenterTraslation.HcpCenterId);
@@ -120,7 +121,7 @@ namespace vascernNew.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), "HcpCenters");
             }
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", hcpCenterTraslation.CultureId);
             ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", hcpCenterTraslation.HcpCenterId);
@@ -155,7 +156,7 @@ namespace vascernNew.Controllers
             var hcpCenterTraslation = await _context.HcpCenterTraslations.SingleOrDefaultAsync(m => m.Id == id);
             _context.HcpCenterTraslations.Remove(hcpCenterTraslation);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), "HcpCenters");
         }
 
         private bool HcpCenterTraslationExists(int id)

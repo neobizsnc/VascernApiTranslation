@@ -72,12 +72,16 @@ namespace vascernNew.Controllers.API
         public async Task<IActionResult> GetCentersByCountryNew([FromRoute] string culture)
         {
             //var hcp = await _context.HcpCenters.Include(e => e.CenterEmail).Include(e => e.CenterPhone).ToListAsync();
-            var hcp = await _context.HcpCenterTraslations.Where(x=>x.Culture.Name == culture).ToListAsync();
+            List<HcpCenterTraslation> hcp = await _context.HcpCenterTraslations.Where(x=>x.Culture.Name == culture).Include(x=>x.HcpCenter).ToListAsync();
             var ass = await _context.AssociationTranslation.Where(x => x.Culture.Name == culture).ToListAsync();
+            
+            
             List<Object> union = new List<Object>();
 
             foreach (var j in hcp)
             {
+                j.HcpCenter.CenterEmail = _context.CenterEmail.Where(x => x.HcpCenterId == j.HcpCenterId).ToList();
+                j.HcpCenter.CenterPhone = _context.CenterPhone.Where(x => x.HcpCenterId == j.HcpCenterId).ToList();
                 union.Add(j);
             }
             foreach (var j in ass)
@@ -91,7 +95,7 @@ namespace vascernNew.Controllers.API
         public async Task<IActionResult> GetCentersByDiseaseId([FromRoute] int id, [FromRoute] string culture)
         {
             var cultureId = _context.Culture.Where(x => x.Name == culture).Select(x=>x.Id).SingleOrDefault();
-            List<DiseaseCenter> result = await _context.DiseaseCenter.Where(x => x.DiseaseId == id).Include(k => k.HcpCenter).ThenInclude(z=>z.HcpCenterTraslation).ToListAsync();
+            List<DiseaseCenter> result = await _context.DiseaseCenter.Where(x => x.DiseaseId == id).Include(k => k.HcpCenter).Include(e => e.HcpCenter.CenterEmail).Include(e => e.HcpCenter.CenterPhone).Include(z=>z.HcpCenter.HcpCenterTraslation).ToListAsync();
             List<DiseaseAssociation> resultAss = await _context.DiseaseAssociation.Where(x => x.DiseaseId == id).Include(k => k.Association).ThenInclude(z => z.AssociationTranslation).ToListAsync();
 
             List<HcpCenterTraslation> translationFinal = new List<HcpCenterTraslation>();

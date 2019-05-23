@@ -26,6 +26,8 @@ namespace vascernNew.Data
         public DbSet<DiseaseAssociation> DiseaseAssociation { get; set; }
         public DbSet<DiseaseCenter> DiseaseCenter { get; set; }
         public DbSet<Favourites> Favourites { get; set; }
+        public DbSet<CenterEmail> CenterEmail { get; set; }
+        public DbSet<CenterPhone> CenterPhone { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
