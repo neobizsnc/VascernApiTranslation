@@ -19,6 +19,7 @@ namespace vascernNew.Controllers
             _context = context;
         }
 
+
         [HttpGet("GetPersonalFavorites/{uuid}")]
         public async Task<IActionResult> GetPersonalFavorites([FromRoute] string uuid)
         {

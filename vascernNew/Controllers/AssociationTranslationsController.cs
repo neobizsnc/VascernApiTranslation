@@ -52,7 +52,13 @@ namespace vascernNew.Controllers
         {
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", "Name", id);
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name");
-            return View();
+            ViewData["AssociationIdSingle"] = id;
+            var assTraslation = _context.AssociationTranslation.SingleOrDefault(m => m.CultureId == 2 && m.AssociationId == id);
+            if (assTraslation == null)
+            {
+                return View();
+            }
+            return View(assTraslation);
         }
 
         // POST: AssociationTranslations/Create
@@ -70,6 +76,7 @@ namespace vascernNew.Controllers
             }
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", "Name", associationTranslation.AssociationId);
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", associationTranslation.CultureId);
+            ViewData["AssociationIdSingle"] = associationTranslation.AssociationId;
             return View(associationTranslation);
         }
 
@@ -88,6 +95,7 @@ namespace vascernNew.Controllers
             }
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", "Name", associationTranslation.AssociationId);
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", associationTranslation.CultureId);
+            ViewData["AssociationIdSingle"] = id;
             return View(associationTranslation);
         }
 
@@ -96,7 +104,7 @@ namespace vascernNew.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,NameWorkingGroup,Country,City,Address,Zipcode,Contact,PhoneDirect,Fax,OpeningTime,HowToContact,EmailDirect,Website,Facebook,Twitter,Youtube,Linkedin,Instagram,Service,Lat,Lng,Type,CultureId,AssociationId")] AssociationTranslation associationTranslation)
+        public async Task<IActionResult> Edit(int id, AssociationTranslation associationTranslation)
         {
             if (id != associationTranslation.Id)
             {
@@ -125,6 +133,7 @@ namespace vascernNew.Controllers
             }
             ViewData["AssociationId"] = new SelectList(_context.Association, "Id", "Name", associationTranslation.AssociationId);
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", associationTranslation.CultureId);
+            ViewData["AssociationIdSingle"] = id;
             return View(associationTranslation);
         }
 
@@ -144,7 +153,7 @@ namespace vascernNew.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["AssociationIdSingle"] = id;
             return View(associationTranslation);
         }
 

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<vascernNew.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "UserList";
+}
+
+<h2>User List Email</h2>
+
+<ul style="margin: 0; padding: 0; margin-top: 30px">
+    @foreach (var user in Model)
+    {
+    <li style="margin-bottom: 10px; list-style: none">
+        @user.Email =>
+        @if (user.Type == 1)
+        {
+            <span>HCP</span>
+        }
+        else if (user.Type == 2)
+        {
+            <span>ASSOCIATION</span>
+        }
+        else
+        {
+            <span>ADMIN</span>
+        }
+    </li>
+    }
+</ul>

@@ -135,6 +135,8 @@ namespace vascernNew.Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<int>("AssociationId");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -142,6 +144,8 @@ namespace vascernNew.Data.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<int>("HcpCenterId");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -163,10 +167,16 @@ namespace vascernNew.Data.Migrations
 
                     b.Property<bool>("TwoFactorEnabled");
 
+                    b.Property<int>("Type");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AssociationId");
+
+                    b.HasIndex("HcpCenterId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -249,6 +259,12 @@ namespace vascernNew.Data.Migrations
                     b.Property<string>("OpeningTime");
 
                     b.Property<string>("PhoneDirect");
+
+                    b.Property<string>("SecondEmail");
+
+                    b.Property<string>("SecondPhone");
+
+                    b.Property<string>("SecondWebsite");
 
                     b.Property<string>("Service");
 
@@ -448,11 +464,17 @@ namespace vascernNew.Data.Migrations
 
                     b.Property<int>("HcpCenterId");
 
+                    b.Property<string>("HcpSecondWebsite");
+
                     b.Property<string>("HcpWebsite");
 
                     b.Property<string>("InfoPointInside");
 
                     b.Property<string>("InfoPointOutside");
+
+                    b.Property<bool>("IsAffiliated");
+
+                    b.Property<bool>("IsEarn");
 
                     b.Property<string>("Ish24");
 
@@ -469,6 +491,10 @@ namespace vascernNew.Data.Migrations
                     b.Property<string>("OtherSpecialistOutside");
 
                     b.Property<string>("PhoneDirect");
+
+                    b.Property<string>("SecondEmail");
+
+                    b.Property<string>("SecondPhone");
 
                     b.Property<string>("Twitter");
 
@@ -534,6 +560,19 @@ namespace vascernNew.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("vascernNew.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("vascernNew.Models.Association", "Association")
+                        .WithMany("ApplicationUser")
+                        .HasForeignKey("AssociationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("vascernNew.Models.HcpCenter", "HcpCenter")
+                        .WithMany("ApplicationUser")
+                        .HasForeignKey("HcpCenterId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("vascernNew.Models.AssociationHcp", b =>
                 {
                     b.HasOne("vascernNew.Models.Association", "Association")
@@ -563,7 +602,7 @@ namespace vascernNew.Data.Migrations
             modelBuilder.Entity("vascernNew.Models.CenterEmail", b =>
                 {
                     b.HasOne("vascernNew.Models.HcpCenter", "HcpCenter")
-                        .WithMany()
+                        .WithMany("CenterEmail")
                         .HasForeignKey("HcpCenterId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -571,7 +610,7 @@ namespace vascernNew.Data.Migrations
             modelBuilder.Entity("vascernNew.Models.CenterPhone", b =>
                 {
                     b.HasOne("vascernNew.Models.HcpCenter", "HcpCenter")
-                        .WithMany()
+                        .WithMany("CenterPhone")
                         .HasForeignKey("HcpCenterId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using vascernNew.Models;
@@ -12,6 +14,15 @@ namespace vascernNew.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+
+
+        public HomeController(
+            UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [HttpGet, ActionName("GetEventVenuesList")]
         public JsonResult GetEventVenuesList(string SearchText, string ApiKey)
         {
@@ -96,6 +107,16 @@ namespace vascernNew.Controllers
 
             return View();
         }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult UserList()
+        {
+            var user = _userManager.Users.ToList();
+            return View(user);
+        }
+
+
+        
 
         public IActionResult Error()
         {

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,19 +12,41 @@ using vascernNew.Models;
 
 namespace vascernNew.Controllers
 {
+    [Authorize(Roles = "Admin, Association")]
     public class AssociationsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _manager;
 
-        public AssociationsController(ApplicationDbContext context)
+
+        public AssociationsController(ApplicationDbContext context, UserManager<ApplicationUser> manager)
         {
+            _manager = manager;
             _context = context;
+        }
+
+        private async Task<ApplicationUser> GetCurrentUser()
+        {
+            return await _manager.GetUserAsync(HttpContext.User);
         }
 
         // GET: Associations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Association.ToListAsync());
+            var user = await GetCurrentUser();
+
+            if (user.Type == 2) //ASS
+            {
+                return View(await _context.Association.Where(x=>x.Id == user.AssociationId).ToListAsync());
+            }
+            else if (user.Type == 1)
+            {
+                return RedirectToAction("AccessDenied", "Account");
+            }
+            else
+            {
+                return View(await _context.Association.ToListAsync());
+            }
         }
 
         // GET: Associations/Details/5

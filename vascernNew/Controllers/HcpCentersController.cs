@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,19 +12,41 @@ using vascernNew.Models;
 
 namespace vascernNew.Controllers
 {
+    [Authorize(Roles = "Admin, Hcp")]
     public class HcpCentersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _manager;
 
-        public HcpCentersController(ApplicationDbContext context)
+        public HcpCentersController(ApplicationDbContext context, UserManager<ApplicationUser> manager)
         {
+            _manager = manager;
             _context = context;
+        }
+
+        private async Task<ApplicationUser> GetCurrentUser()
+        {
+            return await _manager.GetUserAsync(HttpContext.User);
         }
 
         // GET: HcpCenters
         public async Task<IActionResult> Index()
         {
-            return View(await _context.HcpCenters.ToListAsync());
+            var user = await GetCurrentUser();
+
+            if (user.Type == 2) //ASS
+            {
+                return RedirectToAction("AccessDenied", "Account");
+            }
+            else if (user.Type == 1)
+            {
+                return View(await _context.HcpCenters.Where(x => x.Id == user.HcpCenterId).ToListAsync());
+            }
+            else
+            {
+                return View(await _context.HcpCenters.ToListAsync());
+            }
+
         }
 
         // GET: HcpCenters/Details/5

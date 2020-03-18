@@ -52,7 +52,13 @@ namespace vascernNew.Controllers
         {
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name");
             ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", id);
-            return View();
+            ViewData["HcpCenterIdSingle"] = id;
+            var hcpCenterTraslation =  _context.HcpCenterTraslations.SingleOrDefault(m => m.CultureId == 2 && m.HcpCenterId == id);
+            if (hcpCenterTraslation == null)
+            {
+                return View();
+            }
+            return View(hcpCenterTraslation);
         }
 
         // POST: HcpCenterTraslations/Create
@@ -70,6 +76,7 @@ namespace vascernNew.Controllers
             }
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", hcpCenterTraslation.CultureId);
             ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", hcpCenterTraslation.HcpCenterId);
+            ViewData["HcpCenterIdSingle"] = hcpCenterTraslation.HcpCenterId;
             return View(hcpCenterTraslation);
         }
 
@@ -88,6 +95,7 @@ namespace vascernNew.Controllers
             }
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", hcpCenterTraslation.CultureId);
             ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", hcpCenterTraslation.HcpCenterId);
+            ViewData["HcpCenterIdSingle"] = id;
             return View(hcpCenterTraslation);
         }
 
@@ -96,7 +104,7 @@ namespace vascernNew.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Website,Name,Deparment,Address,City,Zipcode,Country,Cordinator,EmailDirect,PhoneDirect,Fax,OpeningTime,CoreService,OtherSpecialistInside,OtherSpecialistOutside,Ish24,H24Number,HcpWebsite,Youtube,Facebook,Twitter,InfoPointInside,InfoPointOutside,Lat,Lng,Type,CultureId,HcpCenterId")] HcpCenterTraslation hcpCenterTraslation)
+        public async Task<IActionResult> Edit(int id, HcpCenterTraslation hcpCenterTraslation)
         {
             if (id != hcpCenterTraslation.Id)
             {
@@ -125,6 +133,7 @@ namespace vascernNew.Controllers
             }
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", hcpCenterTraslation.CultureId);
             ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", hcpCenterTraslation.HcpCenterId);
+            ViewData["HcpCenterIdSingle"] = id;
             return View(hcpCenterTraslation);
         }
 
@@ -144,7 +153,7 @@ namespace vascernNew.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["HcpCenterIdSingle"] = id;
             return View(hcpCenterTraslation);
         }
 

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using vascernNew.Data;
 using vascernNew.Models;
 using vascernNew.Models.AccountViewModels;
 using vascernNew.Services;
@@ -21,20 +22,27 @@ namespace vascernNew.Controllers
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ApplicationDbContext _context;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+ 
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _context = context;
+            _roleManager = roleManager;
         }
 
         [TempData]
@@ -206,25 +214,43 @@ namespace vascernNew.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Register(string returnUrl = null)
         {
+            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", "");
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", "Name", "");
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+            await createRolesandUsers();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, HcpCenterId = model.HcpCenterId, Type = model.Type, AssociationId = model.AssociationId };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    if (model.Type == 0)
+                    {
+                        await _userManager.AddToRoleAsync(user, "Admin");
+                    }
+                    else if (model.Type == 1)
+                    {
+                        await _userManager.AddToRoleAsync(user, "Hcp");
+                    }
+                    else {
+                        await _userManager.AddToRoleAsync(user, "Association");
+                    }
+                    
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
@@ -236,9 +262,40 @@ namespace vascernNew.Controllers
                 }
                 AddErrors(result);
             }
-
+            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", "");
+            ViewData["AssociationId"] = new SelectList(_context.Association, "Id", "Name", "");
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private async Task createRolesandUsers()
+        {
+            bool x = await _roleManager.RoleExistsAsync("Admin");
+            if (!x)
+            {
+                // first we create Admin rool    
+                var role = new IdentityRole();
+                role.Name = "Admin";
+                await _roleManager.CreateAsync(role);
+            }
+
+            // creating Creating Manager role     
+            x = await _roleManager.RoleExistsAsync("Hcp");
+            if (!x)
+            {
+                var role = new IdentityRole();
+                role.Name = "Hcp";
+                await _roleManager.CreateAsync(role);
+            }
+
+            // creating Creating Employee role     
+            x = await _roleManager.RoleExistsAsync("Association");
+            if (!x)
+            {
+                var role = new IdentityRole();
+                role.Name = "Association";
+                await _roleManager.CreateAsync(role);
+            }
         }
 
         [HttpPost]

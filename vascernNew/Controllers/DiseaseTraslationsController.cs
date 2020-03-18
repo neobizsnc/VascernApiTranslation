@@ -52,7 +52,13 @@ namespace vascernNew.Controllers
         {
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name");
             ViewData["DiseaseId"] = new SelectList(_context.Disease, "Id", "Name", id);
-            return View();
+            ViewData["DiseaseIdSingle"] = id;
+            var diseaseTraslation = _context.DiseaseTraslation.SingleOrDefault(m => m.CultureId == 2 && m.DiseaseId == id);
+            if (diseaseTraslation == null)
+            {
+                return NotFound();
+            }
+            return View(diseaseTraslation);
         }
 
         // POST: DiseaseTraslations/Create
@@ -70,6 +76,7 @@ namespace vascernNew.Controllers
             }
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", diseaseTraslation.CultureId);
             ViewData["DiseaseId"] = new SelectList(_context.Disease, "Id", "Name", diseaseTraslation.DiseaseId);
+            ViewData["DiseaseIdSingle"] = diseaseTraslation.DiseaseId;
             return View(diseaseTraslation);
         }
 
@@ -88,6 +95,7 @@ namespace vascernNew.Controllers
             }
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", diseaseTraslation.CultureId);
             ViewData["DiseaseId"] = new SelectList(_context.Disease, "Id", "Name", diseaseTraslation.DiseaseId);
+            ViewData["DiseaseIdSingle"] = diseaseTraslation.DiseaseId;
             return View(diseaseTraslation);
         }
 
@@ -125,6 +133,7 @@ namespace vascernNew.Controllers
             }
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name", diseaseTraslation.CultureId);
             ViewData["DiseaseId"] = new SelectList(_context.Disease, "Id", "Name", diseaseTraslation.DiseaseId);
+            ViewData["DiseaseIdSingle"] = diseaseTraslation.DiseaseId;
             return View(diseaseTraslation);
         }
 

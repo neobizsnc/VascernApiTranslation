@@ -12,5 +12,6 @@ namespace vascernNew.Models
         public ICollection<AssociationTranslation> AssociationTranslation { get; set; }
         public ICollection<AssociationHcp> AssociationHcp { get; set; }
         public ICollection<DiseaseAssociation> DiseaseAssociation { get; set; }
+        public ICollection<ApplicationUser> ApplicationUser { get; set; }
     }
 }

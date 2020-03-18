@@ -10,6 +10,7 @@ namespace vascernNew.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<HcpCenterTraslation> HcpCenterTraslation { get; set; }
+        public ICollection<ApplicationUser> ApplicationUser { get; set; }
         public ICollection<DiseaseCenter> DiseaseCenter { get; set; }
         public ICollection<AssociationHcp> AssociationHcp { get; set; }
         public ICollection<CenterEmail> CenterEmail { get; set; }

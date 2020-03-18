@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-<h4>HcpCenterTraslation</h4>
+<h4>Hcp Center Translation</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -22,12 +22,17 @@
                 <span asp-validation-for="Website" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="HcpSecondWebsite" class="control-label">Other Website</label>
+                <input asp-for="HcpSecondWebsite" class="form-control" />
+                <span asp-validation-for="HcpSecondWebsite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Deparment" class="control-label"></label>
+                <label asp-for="Deparment" class="control-label">Department</label>
                 <input asp-for="Deparment" class="form-control" />
                 <span asp-validation-for="Deparment" class="text-danger"></span>
             </div>
@@ -42,7 +47,7 @@
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Zipcode" class="control-label"></label>
+                <label asp-for="Zipcode" class="control-label">Zip code</label>
                 <input asp-for="Zipcode" class="form-control" />
                 <span asp-validation-for="Zipcode" class="text-danger"></span>
             </div>
@@ -52,19 +57,29 @@
                 <span asp-validation-for="Country" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Cordinator" class="control-label"></label>
+                <label asp-for="Cordinator" class="control-label">Coordinator</label>
                 <input asp-for="Cordinator" class="form-control" />
                 <span asp-validation-for="Cordinator" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EmailDirect" class="control-label"></label>
+                <label asp-for="EmailDirect" class="control-label">Email Direct</label>
                 <input asp-for="EmailDirect" class="form-control" />
                 <span asp-validation-for="EmailDirect" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneDirect" class="control-label"></label>
+                <label asp-for="SecondEmail" class="control-label">Second Email</label>
+                <input asp-for="SecondEmail" class="form-control" />
+                <span asp-validation-for="SecondEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneDirect" class="control-label">Phone Direct</label>
                 <input asp-for="PhoneDirect" class="form-control" />
                 <span asp-validation-for="PhoneDirect" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondPhone" class="control-label">Phone Direct</label>
+                <input asp-for="SecondPhone" class="form-control" />
+                <span asp-validation-for="SecondPhone" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Fax" class="control-label"></label>
@@ -72,37 +87,37 @@
                 <span asp-validation-for="Fax" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OpeningTime" class="control-label"></label>
+                <label asp-for="OpeningTime" class="control-label">Opening Time</label>
                 <input asp-for="OpeningTime" class="form-control" />
                 <span asp-validation-for="OpeningTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CoreService" class="control-label"></label>
+                <label asp-for="CoreService" class="control-label">Core Service</label>
                 <input asp-for="CoreService" class="form-control" />
                 <span asp-validation-for="CoreService" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OtherSpecialistInside" class="control-label"></label>
+                <label asp-for="OtherSpecialistInside" class="control-label">Other Specialist Inside</label>
                 <input asp-for="OtherSpecialistInside" class="form-control" />
                 <span asp-validation-for="OtherSpecialistInside" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OtherSpecialistOutside" class="control-label"></label>
+                <label asp-for="OtherSpecialistOutside" class="control-label">Other Specialist Outside</label>
                 <input asp-for="OtherSpecialistOutside" class="form-control" />
                 <span asp-validation-for="OtherSpecialistOutside" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Ish24" class="control-label"></label>
+                <label asp-for="Ish24" class="control-label">Is h24</label>
                 <input asp-for="Ish24" class="form-control" />
                 <span asp-validation-for="Ish24" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="H24Number" class="control-label"></label>
+                <label asp-for="H24Number" class="control-label">H24 Number</label>
                 <input asp-for="H24Number" class="form-control" />
                 <span asp-validation-for="H24Number" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HcpWebsite" class="control-label"></label>
+                <label asp-for="HcpWebsite" class="control-label">Hcp Website</label>
                 <input asp-for="HcpWebsite" class="form-control" />
                 <span asp-validation-for="HcpWebsite" class="text-danger"></span>
             </div>
@@ -122,12 +137,12 @@
                 <span asp-validation-for="Twitter" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InfoPointInside" class="control-label"></label>
+                <label asp-for="InfoPointInside" class="control-label">Infopoint Inside</label>
                 <input asp-for="InfoPointInside" class="form-control" />
                 <span asp-validation-for="InfoPointInside" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="InfoPointOutside" class="control-label"></label>
+                <label asp-for="InfoPointOutside" class="control-label">Infopoint Outside</label>
                 <input asp-for="InfoPointOutside" class="form-control" />
                 <span asp-validation-for="InfoPointOutside" class="text-danger"></span>
             </div>
@@ -147,22 +162,32 @@
                 <span asp-validation-for="Type" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CultureId" class="control-label"></label>
-                <select asp-for="CultureId" class="form-control" asp-items="ViewBag.CultureId"></select>
+                <label asp-for="IsEarn" class="control-label">VASCERN Affiliated Partners</label>
+                <input asp-for="IsEarn" class="form-control" />
+                <span asp-validation-for="IsEarn" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="IsAffiliated" class="control-label">Referral center cooperating with VASCERN</label>
+                <input asp-for="IsAffiliated" class="form-control" />
+                <span asp-validation-for="IsAffiliated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CultureId" class="control-label">Language</label>
+                <select asp-for="CultureId" class="form-control" asp-items="ViewBag.CultureId"></select>
+            </div>
+            <div class="form-group" style="display: none;">
                 <label asp-for="HcpCenterId" class="control-label"></label>
                 <select asp-for="HcpCenterId" class="form-control" asp-items="ViewBag.HcpCenterId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-block btn-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="HcpCenterTraslations" asp-action="Index" asp-route-id="@ViewBag.HcpCenterIdSingle">Back to List</a>
 </div>
 
 @section Scripts {

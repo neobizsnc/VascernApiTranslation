@@ -17,7 +17,9 @@ namespace vascernNew.Models
         public string Country { get; set; }
         public string Cordinator { get; set; }
         public string EmailDirect { get; set; }
+        public string SecondEmail { get; set; }
         public string PhoneDirect { get; set; }
+        public string SecondPhone { get; set; }
         public string Fax { get; set; }
         public string OpeningTime { get; set; }
         public string CoreService { get; set; }
@@ -26,6 +28,7 @@ namespace vascernNew.Models
         public string Ish24 { get; set; }
         public string H24Number { get; set; }
         public string HcpWebsite { get; set; }
+        public string HcpSecondWebsite { get; set; }
         public string Youtube { get; set; }
         public string Facebook { get; set; }
         public string Twitter { get; set; }
@@ -34,6 +37,8 @@ namespace vascernNew.Models
         public string Lat { get; set; }
         public string Lng { get; set; }
         public string Type { get; set; }
+        public bool IsEarn { get; set; }
+        public bool IsAffiliated { get; set; }
         public int CultureId { get; set; }
         public Culture Culture { get; set; }
         public int HcpCenterId { get; set; }

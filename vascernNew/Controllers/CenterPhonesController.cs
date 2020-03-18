@@ -48,7 +48,7 @@ namespace vascernNew.Controllers
         // GET: CenterPhones/Create
         public IActionResult Create()
         {
-            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Id");
+            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace vascernNew.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Id", centerPhone.HcpCenterId);
+            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", centerPhone.HcpCenterId);
             return View(centerPhone);
         }
 
@@ -82,7 +82,7 @@ namespace vascernNew.Controllers
             {
                 return NotFound();
             }
-            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Id", centerPhone.HcpCenterId);
+            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", centerPhone.HcpCenterId);
             return View(centerPhone);
         }
 
@@ -118,7 +118,7 @@ namespace vascernNew.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Id", centerPhone.HcpCenterId);
+            ViewData["HcpCenterId"] = new SelectList(_context.HcpCenters, "Id", "Name", centerPhone.HcpCenterId);
             return View(centerPhone);
         }
 

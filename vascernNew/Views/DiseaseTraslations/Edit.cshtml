@@ -19,24 +19,24 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CultureId" class="control-label"></label>
+                <label asp-for="CultureId" class="control-label">Language</label>
                 <select asp-for="CultureId" class="form-control" asp-items="ViewBag.CultureId"></select>
                 <span asp-validation-for="CultureId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DiseaseId" class="control-label"></label>
+            <div class="form-group" style="display: none">
+                <label asp-for="DiseaseId" class="control-label" ></label>
                 <select asp-for="DiseaseId" class="form-control" asp-items="ViewBag.DiseaseId"></select>
                 <span asp-validation-for="DiseaseId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-block btn-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-controller="Diseases" asp-action="Index">Back to List</a>
+    <a asp-controller="DiseaseTraslations" asp-action="Index" asp-route-id="@ViewBag.DiseaseIdSingle">Back to List</a>
 </div>
 
 @section Scripts {

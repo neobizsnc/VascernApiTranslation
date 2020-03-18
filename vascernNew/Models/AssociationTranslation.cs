@@ -16,11 +16,14 @@ namespace vascernNew.Models
         public string Zipcode { get; set; }
         public string Contact { get; set; }
         public string PhoneDirect { get; set; }
+        public string SecondPhone { get; set; }
         public string Fax { get; set; }
         public string OpeningTime { get; set; }
         public string HowToContact { get; set; }
         public string EmailDirect { get; set; }
+        public string SecondEmail { get; set; }
         public string Website { get; set; }
+        public string SecondWebsite { get; set; }
         public string Facebook { get; set; }
         public string Twitter { get; set; }
         public string Youtube { get; set; }

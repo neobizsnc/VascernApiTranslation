@@ -21,11 +21,12 @@ namespace vascernNew.Controllers.API
             _context = context;
         }
 
+
         [HttpGet("GetRelatedAssociation/{id}/{culture}")]
         public async Task<IActionResult> GetRelatedAssociation([FromRoute] int id, [FromRoute] string culture)
         {
             var cultureId = _context.Culture.Where(x => x.Name == culture).Select(x => x.Id).SingleOrDefault();
-            List<AssociationHcp> result = await _context.AssociationHcp.Where(x => x.HcpCenterId == id).Include(k => k.Association).ThenInclude(z=>z.AssociationTranslation).ToListAsync();
+            List<AssociationHcp> result = await _context.AssociationHcp.Where(x => x.HcpCenterId == id).Include(k => k.Association).ThenInclude(z => z.AssociationTranslation).ToListAsync();
             List<AssociationTranslation> translationFinal = new List<AssociationTranslation>();
             foreach (var a in result)
             {
@@ -41,6 +42,25 @@ namespace vascernNew.Controllers.API
             }
             return Ok(result);
         }
+
+        [HttpGet("GetHcpByIdCulture/{id}/{culture}")]
+        public async Task<IActionResult> GetHcpByIdCulture([FromRoute] int id, [FromRoute] string culture)
+        {
+            var cultureId = _context.Culture.Where(x => x.Name == culture).Select(x => x.Id).SingleOrDefault();
+            HcpCenter res = await _context.HcpCenters.Where(x => x.Id == id).Include(z => z.HcpCenterTraslation).FirstOrDefaultAsync();
+            HcpCenterTraslation res1 = res.HcpCenterTraslation.Where(x => x.CultureId == cultureId).FirstOrDefault();
+            return Ok(res1);
+        }
+
+        [HttpGet("GetAssByIdCulture/{id}/{culture}")]
+        public async Task<IActionResult> GetAssByIdCulture([FromRoute] int id, [FromRoute] string culture)
+        {
+            var cultureId = _context.Culture.Where(x => x.Name == culture).Select(x => x.Id).SingleOrDefault();
+            Association res = await _context.Association.Where(x => x.Id == id).Include(z => z.AssociationTranslation).FirstOrDefaultAsync();
+            AssociationTranslation res1 = res.AssociationTranslation.Where(x => x.CultureId == cultureId).FirstOrDefault();
+            return Ok(res1);
+        }
+
 
 
         [HttpGet("GetRelatedHcp/{id}/{culture}")]

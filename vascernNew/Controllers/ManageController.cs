@@ -16,7 +16,7 @@ using vascernNew.Services;
 
 namespace vascernNew.Controllers
 {
-    [Authorize]
+    /*[Authorize]
     [Route("[controller]/[action]")]
     public class ManageController : Controller
     {
@@ -541,5 +541,5 @@ namespace vascernNew.Controllers
         }
 
         #endregion
-    }
+    }*/
 }
