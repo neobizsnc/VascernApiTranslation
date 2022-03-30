@@ -53,12 +53,7 @@ namespace vascernNew.Controllers
             ViewData["CultureId"] = new SelectList(_context.Culture, "Id", "Name");
             ViewData["DiseaseId"] = new SelectList(_context.Disease, "Id", "Name", id);
             ViewData["DiseaseIdSingle"] = id;
-            var diseaseTraslation = _context.DiseaseTraslation.SingleOrDefault(m => m.CultureId == 2 && m.DiseaseId == id);
-            if (diseaseTraslation == null)
-            {
-                return NotFound();
-            }
-            return View(diseaseTraslation);
+            return View();
         }
 
         // POST: DiseaseTraslations/Create

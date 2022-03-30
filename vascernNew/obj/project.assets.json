@@ -13397,19 +13397,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tech\\.nuget\\packages\\": {}
+    "C:\\Users\\stopp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tech\\Desktop\\Progetti VS\\VascernApi\\vascernNew\\vascernNew.csproj",
+      "projectUniqueName": "C:\\Users\\stopp\\Source\\Repos\\neobizsnc\\VascernApiTranslation\\vascernNew\\vascernNew.csproj",
       "projectName": "vascernNew",
-      "projectPath": "C:\\Users\\tech\\Desktop\\Progetti VS\\VascernApi\\vascernNew\\vascernNew.csproj",
-      "packagesPath": "C:\\Users\\tech\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tech\\Desktop\\Progetti VS\\VascernApi\\vascernNew\\obj\\",
+      "projectPath": "C:\\Users\\stopp\\Source\\Repos\\neobizsnc\\VascernApiTranslation\\vascernNew\\vascernNew.csproj",
+      "packagesPath": "C:\\Users\\stopp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\stopp\\Source\\Repos\\neobizsnc\\VascernApiTranslation\\vascernNew\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tech\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\stopp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13421,6 +13421,7 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
+          "targetAlias": "netcoreapp2.0",
           "projectReferences": {}
         }
       },
@@ -13432,6 +13433,7 @@
     },
     "frameworks": {
       "netcoreapp2.0": {
+        "targetAlias": "netcoreapp2.0",
         "dependencies": {
           "Microsoft.AspNetCore.All": {
             "target": "Package",
@@ -13464,7 +13466,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
